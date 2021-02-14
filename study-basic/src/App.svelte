@@ -1,77 +1,23 @@
 <script>
-	import * as bootstrap from "bootstrap";
-
+	import BootstrapModal from "./bootstrap/BootstrapModal.svelte";
 	export let name;
 
+	let string = `this string contains some <strong>HTML!!!</strong>`;
+
 	document.addEventListener("DOMContentLoaded", function(){
-		const btn = new bootstrap.Button(document.getElementById("sampleBtn"));
-		btn.toggle();
 
 	});
-
-	function handleModal() {
-		const myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {})
-		myModal.show();
-	}
-
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<!-- 변수 처리 -->
+	<h1>Hello {name.toUpperCase()}!</h1>
 
-	<a href="#" id="sampleBtn" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="false"
-	   onclick="console.log(111)">Active toggle link</a>
+	<!-- HTML 파싱을 허용하게 한다. -->
+	<p>{@html string}</p>
 
-
-	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-		Launch demo modal
-	</button>
-
-	<button type="button" class="btn btn-primary" on:click={handleModal}>
-		Launch demo modal2
-	</button>
-
-	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					...
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
+	<BootstrapModal/>
 </main>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
 </style>
