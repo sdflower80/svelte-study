@@ -1,0 +1,6 @@
+rootProject.name = 'svelte-study'
+include 'example-basic-template'
+include 'example-setting-ui'
+include 'study-basic'
+include 'study-special-elements'
+include 'study-with-bootstrap5'
