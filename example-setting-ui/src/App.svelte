@@ -1,51 +1,28 @@
 <script>
-    let envProps = [
-        {key: "a", value: "ttt"},
-        {key: "b", value: "ttt"},
-        {key: "c", value: "ttt"},
-        {key: "d", value: "ttt"},
-        {key: "e", value: "ttt"},
-        {key: "f", value: "ttt"},
-        {key: "g", value: "ttt"},
-    ];
 
-    function expandTextarea(event) {
-        console.log("btn", event);
+    import ConfigureDivList from "./ConfigureDivList.svelte";
 
-    }
+    let configureList = [];
+
+    const addConfigure = (key, desc, value) => {
+        configureList.push({
+                key: key,
+                desc: desc,
+                value: value
+            });
+    };
+
+    addConfigure("TEST_KEY_TEXT_VALUE", "TEXT", "TEST_VALUE");
+    addConfigure("TEST_KEY_BOOLEAN_VALUE", "BOOLEAN", "TEST_VALUE");
+    addConfigure("TEST_KEY_LONG_STRING_VALUE", "LONG_STRING", "TEST_VALUE");
+    addConfigure("TEST_KEY_JSON_VALUE", "JSON", "{\"k\":\"value\"}");
 </script>
 
 <main>
     <h1>Setting UI</h1>
-    <table class="table">
-        <thead class="table-light">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Key</th>
-            <th scope="col">Value</th>
-        </tr>
-        </thead>
-        <tbody>
-        {#each envProps as p, i}
-            <tr>
-                <th scope="row">{i+1}</th>
-                <td>{p.key}</td>
-                <td>
-                    <div class="container">
-                        <div class="row justify-content-start">
-                            <div class="col-6">
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="1">{p.value}</textarea>
-                            </div>
-                            <div class="col-3">
-                                <button class="btn btn-primary btn-sm" type="button" on:click={expandTextarea}>확장</button>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        {/each}
-        </tbody>
-    </table>
+
+    <ConfigureDivList configureList={configureList} />
+
 </main>
 
 <style>
